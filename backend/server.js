@@ -31,15 +31,13 @@ app.use('/api/projects', require('./routes/projects'));
 app.use('/api/projects/:projectId/tasks', require('./routes/tasks'));
 app.use('/api/dashboard', require('./routes/dashboard'));
 
-// Serve React build in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'public')));
-  app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
-} else {
-  app.use((req, res) => {
-    res.status(404).json({ success: false, message: `Route ${req.originalUrl} not found.` });
-  });
-}
+
+// Serve React build (always serve build for Railway deployment)
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+app.get('*', (req, res) => {
+  // If the request doesn't match an API route, serve the React app
+  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+});
 
 // Error handler (must be last)
 app.use(errorHandler);
