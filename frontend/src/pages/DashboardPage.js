@@ -90,7 +90,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Stat cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16, marginBottom: 32 }}>
+      <div className="dashboard-stats-grid">
         <StatCard icon={FolderOpen} label="Projects" value={stats?.totalProjects || 0} color="var(--accent-light)" sub="Active workspaces" />
         <StatCard icon={BarChart3} label="My Tasks" value={stats?.totalTasks || 0} color="var(--blue)" sub="Assigned to you" />
         <StatCard icon={CheckCircle2} label="Completed" value={stats?.completed || 0} color="var(--green)" sub="All time" />
@@ -98,7 +98,7 @@ export default function DashboardPage() {
         <StatCard icon={Clock} label="Due Today" value={stats?.dueToday || 0} color="var(--yellow)" sub="Today's deadlines" />
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 32 }}>
+      <div className="dashboard-main-grid">
         {/* Status donut */}
         <div className="card">
           <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 16, marginBottom: 20 }}>Task Status</h3>
@@ -142,7 +142,7 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+      <div className="dashboard-tasks-grid">
         {/* Overdue tasks */}
         <div className="card">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>

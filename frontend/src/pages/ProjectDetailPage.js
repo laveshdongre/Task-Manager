@@ -218,7 +218,7 @@ function CreateTaskModal({ projectId, members, onClose, onCreated }) {
               onChange={e => setForm(f => ({ ...f, description: e.target.value }))} rows={3} />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+          <div className="projectdetail-formgrid">
             <div className="form-group">
               <label className="form-label">Priority</label>
               <select className="input" value={form.priority} onChange={e => setForm(f => ({ ...f, priority: e.target.value }))}>
@@ -233,7 +233,7 @@ function CreateTaskModal({ projectId, members, onClose, onCreated }) {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+          <div className="projectdetail-formgrid">
             <div className="form-group">
               <label className="form-label">Assign To</label>
               <select className="input" value={form.assignedTo} onChange={e => setForm(f => ({ ...f, assignedTo: e.target.value }))}>
@@ -384,9 +384,10 @@ export default function ProjectDetailPage() {
           <ArrowLeft size={14} /> Back to Projects
         </button>
 
-        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-            <div style={{ width: 44, height: 44, borderRadius: 12, background: (project.color || 'var(--accent)') + '22', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+
+        <div className="project-header-responsive">
+          <div className="project-header-main">
+            <div className="project-header-icon" style={{ width: 44, height: 44, borderRadius: 12, background: (project.color || 'var(--accent)') + '22', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ width: 20, height: 20, borderRadius: '50%', background: project.color || 'var(--accent)' }} />
             </div>
             <div>
@@ -394,12 +395,10 @@ export default function ProjectDetailPage() {
               {project.description && <p style={{ color: 'var(--text-secondary)', fontSize: 14, marginTop: 2 }}>{project.description}</p>}
             </div>
           </div>
-
-          <div style={{ display: 'flex', gap: 8, flexShrink: 0 }}>
+          <div className="project-header-actions">
             <button className="btn btn-secondary btn-sm" onClick={() => setShowMembers(true)}>
               <Users size={14} /> {project.members?.length} Members
             </button>
-            {/* All project members can create tasks */}
             <button className="btn btn-primary btn-sm" onClick={() => setShowCreate(true)}>
               <Plus size={14} /> Add Task
             </button>
@@ -429,7 +428,7 @@ export default function ProjectDetailPage() {
       </div>
 
       {/* Kanban board */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, overflowX: 'auto' }}>
+      <div className="kanban-board-grid">
         {STATUSES.map(status => (
           <div key={status}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12, padding: '0 4px' }}>

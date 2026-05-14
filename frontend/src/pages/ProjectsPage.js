@@ -187,7 +187,7 @@ export default function ProjectsPage() {
           <button className="btn btn-primary" onClick={() => setShowCreate(true)}><Plus size={16} /> Create Project</button>
         </div>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 16 }}>
+        <div className="projects-grid">
           {projects.map(p => (
             <ProjectCard key={p._id} project={p} currentUserId={user?._id}
               onDelete={id => setProjects(ps => ps.filter(x => x._id !== id))} />

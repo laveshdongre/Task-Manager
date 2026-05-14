@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTheme } from '../../context/ThemeContext';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { LayoutDashboard, FolderOpen, LogOut, Menu, X, User, Zap } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
@@ -38,6 +39,7 @@ const NavItem = ({ to, icon: Icon, label, onClick }) => (
 
 export default function Layout() {
   const { user, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -48,6 +50,7 @@ export default function Layout() {
   };
 
   const initials = user?.name?.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) || 'U';
+
 
   const SidebarContent = () => (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', padding: '24px 16px' }}>
@@ -65,7 +68,24 @@ export default function Layout() {
         </span>
       </div>
 
-      {/* Nav */}
+      {/* Theme Toggle (top right for desktop, mobile) */}
+      <div style={{ position: 'absolute', top: 24, right: 24, zIndex: 100 }}>
+        <button
+          aria-label="Toggle theme"
+          onClick={toggleTheme}
+          style={{
+            background: 'none', border: 'none', cursor: 'pointer', padding: 4,
+            borderRadius: '50%', boxShadow: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center',
+            color: 'var(--accent)', fontSize: 22
+          }}
+        >
+          {theme === 'dark' ? (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2m11-11h-2M3 12H1m16.95 6.95-1.41-1.41M6.46 6.46 5.05 5.05m12.02 0-1.41 1.41M6.46 17.54l-1.41 1.41"/></svg>
+          ) : (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+          )}
+        </button>
+      </div>
       <nav style={{ display: 'flex', flexDirection: 'column', gap: 4, flex: 1 }}>
         <p style={{ fontSize: 11, fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px', paddingLeft: 14, marginBottom: 8 }}>
           Navigation
@@ -95,6 +115,7 @@ export default function Layout() {
     </div>
   );
 
+  // Main return for Layout component
   return (
     <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
       {/* Desktop Sidebar */}
@@ -137,6 +158,22 @@ export default function Layout() {
             </div>
             <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 18 }}>TaskFlow</span>
           </div>
+          {/* Theme toggle for mobile topbar */}
+          <button
+            aria-label="Toggle theme"
+            onClick={toggleTheme}
+            style={{
+              background: 'none', border: 'none', cursor: 'pointer', padding: 4,
+              borderRadius: '50%', boxShadow: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center',
+              color: 'var(--accent)', fontSize: 22
+            }}
+          >
+            {theme === 'dark' ? (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2m11-11h-2M3 12H1m16.95 6.95-1.41-1.41M6.46 6.46 5.05 5.05m12.02 0-1.41 1.41M6.46 17.54l-1.41 1.41"/></svg>
+            ) : (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+            )}
+          </button>
           <button className="btn btn-ghost btn-icon" onClick={() => setMobileOpen(true)}>
             <Menu size={20} />
           </button>
