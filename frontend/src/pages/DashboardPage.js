@@ -84,7 +84,7 @@ export default function DashboardPage() {
       <div style={{ marginBottom: 32 }}>
         <h1 style={{ fontSize: 30, fontFamily: 'var(--font-display)' }}>
           Good {new Date().getHours() < 12 ? 'morning' : new Date().getHours() < 18 ? 'afternoon' : 'evening'},{' '}
-          <span style={{ color: 'var(--accent-light)' }}>{user?.name?.split(' ')[0]}</span> 👋
+          <span style={{ color: 'var(--accent-light)' }}>{user?.name?.split(' ')[0]}</span>
         </h1>
         <p style={{ color: 'var(--text-secondary)', marginTop: 6 }}>Here's what's happening with your tasks today.</p>
       </div>

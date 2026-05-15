@@ -51,13 +51,14 @@ function CreateProjectModal({ onClose, onCreated }) {
 
           <div className="form-group">
             <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: 6 }}><Palette size={14} /> Color</label>
-            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            <div className="color-circle-flex">
               {PROJECT_COLORS.map(c => (
                 <button key={c} type="button" onClick={() => setForm(f => ({ ...f, color: c }))}
                   style={{
-                    width: 28, height: 28, borderRadius: '50%', background: c, border: 'none', cursor: 'pointer',
-                    outline: form.color === c ? `3px solid ${c}` : '3px solid transparent',
-                    outlineOffset: 2, transition: 'outline 0.15s',
+                    width: 10, height: 20, borderRadius: '25%', background: c, border: 'none', cursor: 'pointer',
+                    outline: form.color === c ? `2px solid ${c}` : '2px solid transparent',
+                    outlineOffset: 1, transition: 'outline 0.15s',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
                   }} />
               ))}
             </div>

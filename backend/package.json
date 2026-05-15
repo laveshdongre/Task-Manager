@@ -1,7 +1,7 @@
 {
-  "name": "taskflow-backend",
+  "name": "TaskNest-backend",
   "version": "1.0.0",
-  "description": "TaskFlow REST API",
+  "description": "TaskNest REST API",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

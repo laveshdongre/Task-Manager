@@ -1,20 +1,13 @@
 # Task-Manager
 Task Manager is a full-stack web application for managing projects and tasks. It features user authentication, project and task CRUD operations, dashboards, and a modern React frontend with a Node.js/Express backend and MongoDB database.
 
-# TaskFlow — Team Task Manager
+# TaskNest — Team Task Manager
 
 A full-stack web app for project and task management with role-based access control.
 
----
 
 ## Tech Stack
-- **Frontend**: React, React Router, Recharts, Axios
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB (via Mongoose)
-- **Auth**: JWT (JSON Web Tokens)
-- **Deployment**: Railway
 
----
 
 ## File Structure
 
@@ -66,7 +59,6 @@ taskflow/
 └── .gitignore
 ```
 
----
 
 ## Step 1: MongoDB Atlas (database)
 
@@ -78,9 +70,9 @@ This project uses **[MongoDB Atlas](https://www.mongodb.com/cloud/atlas)** (free
    - For local dev: **Add Current IP Address**, or temporarily `0.0.0.0/0` (less secure; okay for quick tests only).
 4. **Database** → **Connect** → **Drivers** → copy the **connection string** (starts with `mongodb+srv://`).
 5. Replace `<password>` with your database user’s password. If the password contains special characters (`@`, `#`, `/`, etc.), [URL-encode them](https://www.mongodb.com/docs/atlas/troubleshoot-connection/#special-characters-in-connection-string-password).
-6. Ensure the database name in the path is `taskflow` (or change `/taskflow` in the URI to match what you want). Example shape:
+6. Ensure the database name in the path is `TaskNest` (or change `/TaskNest` in the URI to match what you want). Example shape:
    ```
-   mongodb+srv://myuser:mypassword@cluster0.xxxxx.mongodb.net/taskflow?retryWrites=true&w=majority
+   mongodb+srv://myuser:mypassword@cluster0.xxxxx.mongodb.net/TaskNest?retryWrites=true&w=majority
    ```
 
 ### Your `backend/.env`
@@ -89,13 +81,12 @@ Copy `backend/.env.example` to `backend/.env` and set **`MONGODB_URI`** to that 
 
 ```
 PORT=5000
-MONGODB_URI=mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/taskflow?retryWrites=true&w=majority
+MONGODB_URI=mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/TaskNest?retryWrites=true&w=majority
 JWT_SECRET=change_this_to_a_long_random_string
 JWT_EXPIRE=7d
 NODE_ENV=development
 ```
 
----
 
 ## Step 2: Run Locally
 
@@ -117,7 +108,6 @@ npm start          # runs on http://localhost:3000
 
 The frontend proxies `/api` requests to `http://localhost:5000` automatically.
 
----
 
 ## Step 3: Deploy to Railway
 
@@ -156,7 +146,6 @@ Railway reads `railway.toml` which:
 
 Your app will be live at `https://your-project.up.railway.app`
 
----
 
 ## API Endpoints
 
@@ -194,7 +183,6 @@ Your app will be live at `https://your-project.up.railway.app`
 |--------|----------|-------------|
 | GET | /api/dashboard | Aggregated stats |
 
----
 
 ## Role-Based Access Control
 
@@ -209,16 +197,5 @@ Your app will be live at `https://your-project.up.railway.app`
 | Delete tasks | ✅ | Own tasks | ❌ |
 | Delete project | ✅ | ❌ | ❌ |
 
----
 
 ## Features
-- 🔐 JWT authentication (signup / login)
-- 🗂 Project creation with color labels
-- 👥 Team invite by email with admin/member roles
-- ✅ Task board (Kanban: To Do → In Progress → Review → Done)
-- 🎯 Priority levels (Low / Medium / High / Critical)
-- 📅 Due date tracking with overdue detection
-- 💬 Task comments
-- 🏷 Task tags
-- 📊 Dashboard with charts (status donut, priority bar)
-- 📱 Responsive design

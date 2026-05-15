@@ -19,7 +19,7 @@ export default function RegisterPage() {
     setLoading(true);
     try {
       await register(form.name, form.email, form.password);
-      toast.success('Account created! Welcome to TaskFlow.');
+      toast.success('Account created! Welcome to TaskNest.');
       navigate('/dashboard');
     } catch (err) {
       toast.error(err.response?.data?.message || 'Registration failed.');
@@ -46,7 +46,7 @@ export default function RegisterPage() {
             <Zap size={22} color="#fff" fill="#fff" />
           </div>
           <div>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 800, letterSpacing: '-0.5px' }}>TaskFlow</h1>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 800, letterSpacing: '-0.5px' }}>TaskNest</h1>
             <p style={{ fontSize: 12, color: 'var(--text-muted)' }}>Team Task Manager</p>
           </div>
         </div>

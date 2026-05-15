@@ -64,7 +64,7 @@ export default function Layout() {
           <Zap size={18} color="#fff" fill="#fff" />
         </div>
         <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 20, letterSpacing: '-0.5px' }}>
-          TaskFlow
+          TaskNest
         </span>
       </div>
 
@@ -156,7 +156,7 @@ export default function Layout() {
             <div style={{ width: 30, height: 30, background: 'var(--accent)', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Zap size={16} color="#fff" fill="#fff" />
             </div>
-            <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 18 }}>TaskFlow</span>
+            <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 18 }}>TaskNest</span>
           </div>
           {/* Theme toggle for mobile topbar */}
           <button

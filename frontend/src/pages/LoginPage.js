@@ -58,7 +58,7 @@ export default function LoginPage() {
             <Zap size={22} color="#fff" fill="#fff" />
           </div>
           <div>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 800, letterSpacing: '-0.5px' }}>TaskFlow</h1>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 800, letterSpacing: '-0.5px' }}>TaskNest</h1>
             <p style={{ fontSize: 12, color: 'var(--text-muted)' }}>Team Task Manager</p>
           </div>
         </div>
@@ -104,12 +104,30 @@ export default function LoginPage() {
           </button>
         </form>
 
-        <p style={{ marginTop: 24, textAlign: 'center', fontSize: 14, color: 'var(--text-secondary)' }}>
-          Don't have an account?{' '}
-          <Link to="/register" style={{ color: 'var(--accent-light)', textDecoration: 'none', fontWeight: 600 }}>
-            Create one
-          </Link>
-        </p>
+        {/* Quick Demo Access (moved below form) */}
+        <div style={{ marginTop: 32 }}>
+          <div style={{ fontSize: 13, color: 'var(--text-muted)', fontWeight: 700, letterSpacing: 1.2, marginBottom: 10 }}>
+            QUICK DEMO ACCESS
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+            <div style={{ border: '1px solid var(--border)', borderRadius: 12, padding: 16, marginBottom: 0, background: 'var(--bg-secondary)' }}>
+              <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 2 }}>Admin demo</div>
+              <div style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 6 }}>
+                demo-admin@taskflow.test / DemoSeed123!
+                <button type="button" onClick={() => setForm({ email: 'demo-admin@taskflow.test', password: 'DemoSeed123!' })} style={{ float: 'right', background: 'none', border: '1px solid var(--accent-light)', color: 'var(--accent-light)', borderRadius: 8, padding: '2px 14px', fontSize: 13, cursor: 'pointer' }}>Use now</button>
+              </div>
+              <div style={{ fontSize: 13, color: 'var(--text-secondary)' }}>Full admin access, project controls, and role management.</div>
+            </div>
+            <div style={{ border: '1px solid var(--border)', borderRadius: 12, padding: 16, background: 'var(--bg-secondary)' }}>
+              <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 2 }}>Member demo</div>
+              <div style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 6 }}>
+                demo-member@taskflow.test / DemoSeed123!
+                <button type="button" onClick={() => setForm({ email: 'demo-member@taskflow.test', password: 'DemoSeed123!' })} style={{ float: 'right', background: 'none', border: '1px solid var(--accent-light)', color: 'var(--accent-light)', borderRadius: 8, padding: '2px 14px', fontSize: 13, cursor: 'pointer' }}>Use now</button>
+              </div>
+              <div style={{ fontSize: 13, color: 'var(--text-secondary)' }}>Member-level experience focused on execution and task updates.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

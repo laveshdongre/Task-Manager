@@ -1,3 +1,22 @@
+/* Color circle grid for project modal */
+
+/* Color circle flex for perfect spacing */
+.color-circle-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 18px;
+  margin: 14px 0 18px 0;
+}
+@media (max-width: 700px) {
+  .color-circle-flex {
+    gap: 12px 12px;
+  }
+}
+@media (max-width: 480px) {
+  .color-circle-flex {
+    gap: 10px 8px;
+  }
+}
 /* Project header responsive styles */
 .project-header-responsive {
   display: flex;
