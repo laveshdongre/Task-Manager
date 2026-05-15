@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, FolderOpen, LogOut, Menu, X, User, Zap } from 'lucide-react';
+import { LayoutDashboard, FolderOpen, LogOut, Menu, X, User, Users, Zap } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import toast from 'react-hot-toast';
 
@@ -92,6 +92,7 @@ export default function Layout() {
         </p>
         <NavItem to="/dashboard" icon={LayoutDashboard} label="Dashboard" onClick={() => setMobileOpen(false)} />
         <NavItem to="/projects" icon={FolderOpen} label="Projects" onClick={() => setMobileOpen(false)} />
+        <NavItem to="/team" icon={Users} label="Team" onClick={() => setMobileOpen(false)} />
       </nav>
 
       {/* User section */}

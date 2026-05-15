@@ -104,30 +104,68 @@ export default function LoginPage() {
           </button>
         </form>
 
-        {/* Quick Demo Access (moved below form) */}
+        {/* Quick Demo Access */}
         <div style={{ marginTop: 32 }}>
           <div style={{ fontSize: 13, color: 'var(--text-muted)', fontWeight: 700, letterSpacing: 1.2, marginBottom: 10 }}>
             QUICK DEMO ACCESS
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-            <div style={{ border: '1px solid var(--border)', borderRadius: 12, padding: 16, marginBottom: 0, background: 'var(--bg-secondary)' }}>
-              <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 2 }}>Admin demo</div>
-              <div style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 6 }}>
-                demo-admin@taskflow.test / DemoSeed123!
-                <button type="button" onClick={() => setForm({ email: 'demo-admin@taskflow.test', password: 'DemoSeed123!' })} style={{ float: 'right', background: 'none', border: '1px solid var(--accent-light)', color: 'var(--accent-light)', borderRadius: 8, padding: '2px 14px', fontSize: 13, cursor: 'pointer' }}>Use now</button>
+            {[
+              {
+                title: 'Admin demo',
+                email: 'demo-admin@taskflow.test',
+                password: 'DemoSeed123!',
+                desc: 'Full admin access, project controls, and role management.',
+              },
+              {
+                title: 'Member demo',
+                email: 'demo-member@taskflow.test',
+                password: 'DemoSeed123!',
+                desc: 'Member-level experience focused on execution and task updates.',
+              },
+            ].map(({ title, email, password, desc }) => (
+              <div
+                key={title}
+                style={{
+                  border: '1px solid var(--border)',
+                  borderRadius: 12,
+                  padding: 16,
+                  background: 'var(--bg-secondary)',
+                }}
+              >
+                {/* Title row */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                  <div style={{ fontWeight: 700, fontSize: 16 }}>{title}</div>
+                  <button
+                    type="button"
+                    onClick={() => setForm({ email, password })}
+                    style={{
+                      background: 'none',
+                      border: '1px solid var(--accent-light)',
+                      color: 'var(--accent-light)',
+                      borderRadius: 8,
+                      padding: '4px 14px',
+                      fontSize: 13,
+                      cursor: 'pointer',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    Use now
+                  </button>
+                </div>
+
+                {/* Credentials */}
+                <div style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 4 }}>
+                  {email} / {password}
+                </div>
+
+                {/* Description */}
+                <div style={{ fontSize: 13, color: 'var(--text-secondary)' }}>{desc}</div>
               </div>
-              <div style={{ fontSize: 13, color: 'var(--text-secondary)' }}>Full admin access, project controls, and role management.</div>
-            </div>
-            <div style={{ border: '1px solid var(--border)', borderRadius: 12, padding: 16, background: 'var(--bg-secondary)' }}>
-              <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 2 }}>Member demo</div>
-              <div style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 6 }}>
-                demo-member@taskflow.test / DemoSeed123!
-                <button type="button" onClick={() => setForm({ email: 'demo-member@taskflow.test', password: 'DemoSeed123!' })} style={{ float: 'right', background: 'none', border: '1px solid var(--accent-light)', color: 'var(--accent-light)', borderRadius: 8, padding: '2px 14px', fontSize: 13, cursor: 'pointer' }}>Use now</button>
-              </div>
-              <div style={{ fontSize: 13, color: 'var(--text-secondary)' }}>Member-level experience focused on execution and task updates.</div>
-            </div>
+            ))}
           </div>
         </div>
+        Create an account? <Link to="/register" style={{ color: 'var(--accent)', fontWeight: 500 }}>Sign Up</Link>
       </div>
     </div>
   );

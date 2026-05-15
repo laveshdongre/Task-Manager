@@ -56,7 +56,7 @@ export default function RegisterPage() {
 
         <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
           {[
-            { name: 'name', label: 'Full Name', type: 'text', placeholder: 'Lavesh Shamnani', Icon: User },
+            { name: 'name', label: 'Full Name', type: 'text', placeholder: 'Example Shamnani', Icon: User },
             { name: 'email', label: 'Email', type: 'email', placeholder: 'you@example.com', Icon: Mail },
             { name: 'password', label: 'Password', type: 'password', placeholder: 'Min 6 characters', Icon: Lock },
           ].map(({ name, label, type, placeholder, Icon }) => (

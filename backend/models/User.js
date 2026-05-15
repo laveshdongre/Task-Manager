@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
+
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -25,6 +26,40 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: '',
   },
+  role: {
+    type: String,
+    enum: ['admin', 'member', 'manager'],
+    default: 'member',
+  },
+  status: {
+    type: String,
+    enum: ['active', 'busy', 'in-meeting', 'away', 'offline'],
+    default: 'active',
+  },
+  availability: {
+    type: String,
+    enum: ['available', 'away', 'busy', 'offline'],
+    default: 'available',
+  },
+  lastSeen: {
+    type: Date,
+    default: Date.now,
+  },
+  assignedProjects: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Project',
+  }],
+  activity: [
+    {
+      type: {
+        type: String,
+        enum: ['login', 'task', 'project', 'status', 'role', 'other'],
+        default: 'other',
+      },
+      detail: String,
+      createdAt: { type: Date, default: Date.now },
+    }
+  ],
 }, { timestamps: true });
 
 // Hash password before saving

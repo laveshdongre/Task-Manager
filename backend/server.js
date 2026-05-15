@@ -25,11 +25,13 @@ app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'TaskFlow API is running 🚀', timestamp: new Date() });
 });
 
+
 // Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/projects', require('./routes/projects'));
 app.use('/api/projects/:projectId/tasks', require('./routes/tasks'));
 app.use('/api/dashboard', require('./routes/dashboard'));
+app.use('/api/team', require('./routes/team'));
 
 
 // Serve React build (always serve build for Railway deployment)

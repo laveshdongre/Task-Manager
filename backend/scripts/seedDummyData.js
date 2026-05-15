@@ -77,6 +77,7 @@ async function run() {
       name: adminDef.name,
       email: adminDef.email,
       password: adminDef.password,
+      role: 'admin',
     });
     console.log('Created user:', admin.email);
   }
@@ -85,6 +86,7 @@ async function run() {
       name: memberDef.name,
       email: memberDef.email,
       password: memberDef.password,
+      role: 'member',
     });
     console.log('Created user:', member.email);
   }
@@ -93,6 +95,7 @@ async function run() {
       name: inviteDef.name,
       email: inviteDef.email,
       password: inviteDef.password,
+      role: 'member',
     });
     console.log('Created user:', inviteUser.email, '(not added to project — use admin to invite)');
   }
